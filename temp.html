@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .test{
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div class="test"></div>
+<script>
+    //document.querySelector(".test").style.msTransform = "translateX(100px)";
+    document.write(document.querySelector(".test").style.webkitTransform);
+    function getTransitionEnd(){
+        var ele = document.createElement("div");
+        var obj = {
+            WebkitTransition: "webkitTransitionEnd",
+            MozTransition : "mozTransitionEnd",
+            MsTransition : "msTransitionEnd",
+            OTransition : "oTransitionEnd",
+            transition : "transitionEnd",
+        }
+        for(var i in obj){
+            if(ele.style[i] != "undefined"){
+                return obj[i];
+            }
+        }
+
+    }
+
+    //array方法：
+    //1 push() unshift()在头部添加 concat()拼接连个数组
+    // splice(a, b, c)删除、替换数组
+    // slice(index,num)切割数组
+    // pop() 从尾部删除 shift() 从头部删除
+    // join('-') 一特殊字符连接数组每一项  split()已特殊标记拆分为数组
+    // sort() 排序
+    // reverse() 反转
+    var a = [1 ,"a", "arr"];
+    var b = a.splice(0);
+
+    //b[0] = 2;
+    document.write(a);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
