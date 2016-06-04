@@ -7,7 +7,6 @@ define(["jquery","js/screen","js/calendar","js/dialog"],function($, screen, cale
         stars:["一星","二星","三星","四星","五星"]
     });
 
-
     function renderList(data){
         var str = "";
         $(data).each(function(i,c){
@@ -23,7 +22,7 @@ define(["jquery","js/screen","js/calendar","js/dialog"],function($, screen, cale
         return str;
     }
 
-    $.ajax({
+    /*$.ajax({
         url:"data/hotel.json",
         type:"post",
         dataType:"json",
@@ -35,7 +34,7 @@ define(["jquery","js/screen","js/calendar","js/dialog"],function($, screen, cale
         error:function(info){
 
         }
-    });
+    });*/
 
 
     $(".list-bar").on('click',"li",function(){

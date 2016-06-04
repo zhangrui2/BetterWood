@@ -26,7 +26,23 @@
         <div class="list-date-out right-arrow">离店日 <span>04-22</span></div>
     </div>
         <section class="list-wrap">
-            <ul>
+
+<script id="list-tpl" type="text/html">
+    <ul>
+        <%for(var i = 0; i<data.length; i++){%>
+        <li class="list-item" dataDistance=" <%= data[i].distance %> " dataBrand=" <%= data[i].name %> " dataStars=" <%= data[i].stars %> " dataPrice=" <%= data[i].low_price/100 %>+ '">
+            <div class="list-img"><img src=" <%= data[i].image %>" alt=""></div>
+            <div class="list-detail">
+                <p> <%= data[i].name %></p>
+                <p><span><em>4.6分</em><em class="list-icon color-y">礼</em><em class="list-icon color-r">促</em><em class="list-icon color-b">返</em></span>
+                    <span><em class="list-price">￥ <%= data[i].low_price/100 %> </em><em>起</em></span></p>
+                <p class="service-info"><span class=""> <%= data[i].stars %></span><span></span><span>P</span></p>
+                <p><span> <%= data[i].addr %></span><span> <%= data[i].distance/1000 %> km</span></p>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+</script>
                 <!--<li class="list-item" data="">
                     <div class="list-img"><img src="img/1.jpg" alt=""></div>
                     <div class="list-detail">
@@ -51,7 +67,7 @@
                         </p>
                     </div>
                 </li>-->
-            </ul>
+
         </section>
         <div class="mask-layer hide"></div>
         <div class="plugin-bottom plugin-list">
@@ -84,7 +100,25 @@
     </div>
     <div class="advanced-mask-layer hide"></div>
 </div>
-
+<script src="lib/template-native.js"></script>
+<script>
+    function serverLink(path, param, callback) {
+        var xhr = new XMLHttpRequest(), data = null;
+        xhr.open('post', path, true)//true 异步
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                data = JSON.parse(xhr.responseText);
+                callback && callback(data);
+            }
+        };
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(param);
+    }
+    serverLink("data/hotel.json", "123" ,function(data){
+        var _data = data.result.hotel_list;
+        document.querySelector(".list-wrap").innerHTML = template("list-tpl",{data:_data});
+    });
+</script>
 <script type="text/javascript" data-main="main" src="lib/require.js"></script>
 </body>
 </html>

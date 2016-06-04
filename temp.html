@@ -14,7 +14,6 @@
 <body>
 <div class="test"></div>
 <script>
-    //document.querySelector(".test").style.msTransform = "translateX(100px)";
     document.write(document.querySelector(".test").style.webkitTransform);
     function getTransitionEnd(){
         var ele = document.createElement("div");
@@ -24,7 +23,7 @@
             MsTransition : "msTransitionEnd",
             OTransition : "oTransitionEnd",
             transition : "transitionEnd"
-        }
+        };
         for(var i in obj){
             if(ele.style[i] != "undefined"){
                 return obj[i];
@@ -43,7 +42,6 @@
     // reverse() 反转
     var a = [1 ,"a", "arr"];
     var b = a.splice(0);
-
     //b[0] = 2;
     document.write(a);
 

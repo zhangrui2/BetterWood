@@ -1,6 +1,7 @@
 define([],function(){
     var Swiper = function(targetEle){
         this.wrap = document.querySelector(targetEle);
+        if(!this.wrap)return;
         this._ul = this.wrap.querySelector("ul");
         this.items = this._ul.querySelectorAll("li");
         this.setStyle();
